@@ -1,0 +1,5 @@
+// {
+//     "rust-analyzer.server.extraEnv": {
+//         "RUST_SRC_PATH": "~/Users/georgeberdovskiy/Desktop/UCD/Research/PLDI25/coenobita/library/std"
+//     }
+// }
