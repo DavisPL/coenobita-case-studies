@@ -3,6 +3,7 @@ use std::fmt;
 use std::io;
 use std::path::{Path, PathBuf};
 use std::convert::From;
+use std::cap::AsRef;
 
 use crate::DirEntry;
 

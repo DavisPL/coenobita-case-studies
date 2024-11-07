@@ -7,6 +7,7 @@ use std::result;
 use std::convert::From;
 
 use crate::{DirEntry, Error};
+pub use std::cap::AsRef;
 
 /// Create an error from a format!-like syntax.
 #[macro_export]

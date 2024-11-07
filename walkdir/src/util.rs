@@ -1,8 +1,9 @@
 use std::io;
 use std::path::Path;
+use std::cap::AsRef;
 
 #[cfg(unix)]
-pub fn device_num<P: AsRef<Path>>(path: P) -> io::Result<u64> {
+pub fn device_num<P: std::convert::AsRef<Path>>(path: P) -> io::Result<u64> {
     use std::os::unix::fs::MetadataExt;
 
     path.as_ref().metadata().map(|md| md.dev())

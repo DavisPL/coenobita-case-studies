@@ -109,7 +109,8 @@ for entry in walker.filter_entry(|e| !is_hidden(e)) {
 #[cfg(doctest)]
 doc_comment::doctest!("../README.md");
 
-use std::cap::From;
+use core::convert::From;
+use std::cap::AsRef;
 use std::cmp::{min, Ordering};
 use std::fmt;
 use std::fs::{self, ReadDir};
@@ -299,7 +300,7 @@ impl WalkDir {
                 contents_first: false,
                 same_file_system: false,
             },
-            root: root.as_ref().to_path_buf(),
+            root: <P as std::convert::AsRef<Path>>::as_ref(&root).to_path_buf(),
         }
     }
 
@@ -982,7 +983,7 @@ impl IntoIter {
                 return Err(Error::from_loop(
                     self.depth,
                     &ancestor.path,
-                    child.as_ref(),
+                    <P as std::convert::AsRef<Path>>::as_ref(&child),
                 ));
             }
         }

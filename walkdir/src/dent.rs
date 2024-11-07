@@ -2,6 +2,7 @@ use std::ffi::OsStr;
 use std::fmt;
 use std::fs::{self, FileType};
 use std::path::{Path, PathBuf};
+use std::cap::AsRef;
 
 use crate::error::Error;
 use crate::Result;
