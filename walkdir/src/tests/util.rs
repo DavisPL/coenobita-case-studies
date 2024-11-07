@@ -4,6 +4,7 @@ use std::fs::{self, File};
 use std::io;
 use std::path::{Path, PathBuf};
 use std::result;
+use std::convert::From;
 
 use crate::{DirEntry, Error};
 

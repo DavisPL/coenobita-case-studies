@@ -109,6 +109,7 @@ for entry in walker.filter_entry(|e| !is_hidden(e)) {
 #[cfg(doctest)]
 doc_comment::doctest!("../README.md");
 
+use std::cap::From;
 use std::cmp::{min, Ordering};
 use std::fmt;
 use std::fs::{self, ReadDir};
@@ -138,7 +139,7 @@ macro_rules! itry {
     ($e:expr) => {
         match $e {
             Ok(v) => v,
-            Err(err) => return Some(Err(From::from(err))),
+            Err(err) => return Some(Err(std::convert::From::from(err))),
         }
     };
 }
