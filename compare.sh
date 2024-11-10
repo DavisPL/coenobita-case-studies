@@ -21,26 +21,27 @@ compare_crate() {
     fi
 
     # Run diff with exclusions and count differences
-    diff_count=$(diff --exclude .cargo \
-                      --exclude .vscode \
-                      --exclude Cargo.lock \
-                      --exclude Cargo.toml \
-                      --exclude .github \
-                      --exclude *.log \
-                      --recursive "$dir" "originals/$dir" | grep -c '^[<>|]')
+    diff_count=$(diff --suppress-common-lines \
+                      --side-by-side  \
+                      --exclude ".*" \
+                      --exclude "Cargo.lock" \
+                      --exclude "Cargo.toml" \
+                      --exclude "*.log" \
+                      --exclude "target" \
+                      --recursive "walkdir" "originals/walkdir" | grep -v "^diff" | wc -l)
     
     # Print the number of differing lines
     printf "%-10s | %d\n" "$dir" $diff_count
 
     if [ "$out" -eq 1 ]; then
         # Also print the output
-        diff --exclude .cargo \
-             --exclude .vscode \
-             --exclude Cargo.lock \
-             --exclude Cargo.toml \
-             --exclude .github \
-             --exclude *.log \
-             --recursive "$dir" "originals/$dir"
+        diff --suppress-common-lines \
+             --exclude ".*" \
+             --exclude "Cargo.lock" \
+             --exclude "Cargo.toml" \
+             --exclude "*.log" \
+             --exclude "target" \
+             --recursive "walkdir" "originals/walkdir" | grep -v "^diff"
     fi
 
     return $diff_count

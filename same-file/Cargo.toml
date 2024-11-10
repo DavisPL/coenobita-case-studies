@@ -18,5 +18,8 @@ rust-version = "1.60"
 [target.'cfg(windows)'.dependencies.winapi-util]
 version = "0.1.1"
 
+[lib]
+doctest = false
+
 [dev-dependencies]
 doc-comment = "0.3"

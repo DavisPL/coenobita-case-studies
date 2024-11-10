@@ -74,6 +74,7 @@ doc_comment::doctest!("../README.md");
 use std::fs::File;
 use std::io;
 use std::path::Path;
+use std::cap::AsRef;
 
 #[cfg(any(target_os = "redox", unix))]
 use crate::unix as imp;

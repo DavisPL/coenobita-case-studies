@@ -20,7 +20,7 @@ fn run() -> io::Result<()> {
     ];
     let stderr_handle = Handle::stderr()?;
     for candidate in candidates {
-        let handle = Handle::from_path(candidate)?;
+        let handle = Handle::from_path(std::path::Path::new(candidate))?;
         if stderr_handle == handle {
             println!("{:?} is stderr!", candidate);
         } else {
