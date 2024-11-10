@@ -1,0 +1,5 @@
+{
+    "rust-analyzer.server.extraEnv": {
+        "RUSTFLAGS": "--extern std=/Users/georgeberdovskiy/Desktop/UCD/Research/PLDI25/coenobita/library/std/target/debug/libstd.rlib"
+    }
+}

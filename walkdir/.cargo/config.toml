@@ -1,2 +1,3 @@
 [build]
 rustc-wrapper = "coenobita"
+# rustflags = ["--extern", "std=/Users/georgeberdovskiy/Desktop/UCD/Research/PLDI25/coenobita/library/std/target/debug/libcstd.rlib"]
