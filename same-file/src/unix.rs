@@ -4,7 +4,6 @@ use std::io;
 use std::os::unix::fs::MetadataExt;
 use std::os::unix::io::{AsRawFd, FromRawFd, IntoRawFd, RawFd};
 use std::path::Path;
-use std::cap::AsRef;
 
 #[derive(Debug)]
 pub struct Handle {

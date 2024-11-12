@@ -74,7 +74,6 @@ doc_comment::doctest!("../README.md");
 use std::fs::File;
 use std::io;
 use std::path::Path;
-use std::cap::AsRef;
 
 #[cfg(any(target_os = "redox", unix))]
 use crate::unix as imp;
@@ -426,7 +425,7 @@ mod tests {
             let tmpdir = env::temp_dir();
             for _ in 0..TRIES {
                 let count = COUNTER.fetch_add(1, Ordering::SeqCst);
-                let path = tmpdir.join("rust-walkdir").join(count.to_string());
+                let path = tmpdir.join(Path::new("rust-walkdir")).join(Path::new(&count.to_string()));
                 if path.is_dir() {
                     continue;
                 }
@@ -496,8 +495,8 @@ mod tests {
         let tdir = tmpdir();
         let dir = tdir.path();
 
-        File::create(dir.join("a")).unwrap();
-        assert!(is_same_file(dir.join("a"), dir.join("a")).unwrap());
+        File::create(dir.join(Path::new("a"))).unwrap();
+        assert!(is_same_file(dir.join(Path::new("a")), dir.join(Path::new("a"))).unwrap());
     }
 
     #[test]
@@ -505,8 +504,8 @@ mod tests {
         let tdir = tmpdir();
         let dir = tdir.path();
 
-        fs::create_dir(dir.join("a")).unwrap();
-        assert!(is_same_file(dir.join("a"), dir.join("a")).unwrap());
+        fs::create_dir(dir.join(Path::new("a"))).unwrap();
+        assert!(is_same_file(dir.join(Path::new("a")), dir.join(Path::new("a"))).unwrap());
     }
 
     #[test]
@@ -514,9 +513,9 @@ mod tests {
         let tdir = tmpdir();
         let dir = tdir.path();
 
-        File::create(dir.join("a")).unwrap();
-        File::create(dir.join("b")).unwrap();
-        assert!(!is_same_file(dir.join("a"), dir.join("b")).unwrap());
+        File::create(dir.join(Path::new("a"))).unwrap();
+        File::create(dir.join(Path::new("b"))).unwrap();
+        assert!(!is_same_file(dir.join(Path::new("a")), dir.join(Path::new("b"))).unwrap());
     }
 
     #[test]
@@ -524,9 +523,9 @@ mod tests {
         let tdir = tmpdir();
         let dir = tdir.path();
 
-        fs::create_dir(dir.join("a")).unwrap();
-        fs::create_dir(dir.join("b")).unwrap();
-        assert!(!is_same_file(dir.join("a"), dir.join("b")).unwrap());
+        fs::create_dir(dir.join(Path::new("a"))).unwrap();
+        fs::create_dir(dir.join(Path::new("b"))).unwrap();
+        assert!(!is_same_file(dir.join(Path::new("a")), dir.join(Path::new("b"))).unwrap());
     }
 
     #[test]
@@ -534,9 +533,9 @@ mod tests {
         let tdir = tmpdir();
         let dir = tdir.path();
 
-        File::create(dir.join("a")).unwrap();
-        fs::hard_link(dir.join("a"), dir.join("alink")).unwrap();
-        assert!(is_same_file(dir.join("a"), dir.join("alink")).unwrap());
+        File::create(dir.join(Path::new("a"))).unwrap();
+        fs::hard_link(dir.join(Path::new("a")), dir.join(Path::new("alink"))).unwrap();
+        assert!(is_same_file(dir.join(Path::new("a")), dir.join(Path::new("alink"))).unwrap());
     }
 
     #[test]
@@ -544,9 +543,9 @@ mod tests {
         let tdir = tmpdir();
         let dir = tdir.path();
 
-        File::create(dir.join("a")).unwrap();
-        soft_link_file(dir.join("a"), dir.join("alink")).unwrap();
-        assert!(is_same_file(dir.join("a"), dir.join("alink")).unwrap());
+        File::create(dir.join(Path::new("a"))).unwrap();
+        soft_link_file(dir.join(Path::new("a")), dir.join(Path::new("alink"))).unwrap();
+        assert!(is_same_file(dir.join(Path::new("a")), dir.join(Path::new("alink"))).unwrap());
     }
 
     #[test]
@@ -554,9 +553,9 @@ mod tests {
         let tdir = tmpdir();
         let dir = tdir.path();
 
-        fs::create_dir(dir.join("a")).unwrap();
-        soft_link_dir(dir.join("a"), dir.join("alink")).unwrap();
-        assert!(is_same_file(dir.join("a"), dir.join("alink")).unwrap());
+        fs::create_dir(dir.join(Path::new("a"))).unwrap();
+        soft_link_dir(dir.join(Path::new("a")), dir.join(Path::new("alink"))).unwrap();
+        assert!(is_same_file(dir.join(Path::new("a")), dir.join(Path::new("alink"))).unwrap());
     }
 
     #[test]

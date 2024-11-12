@@ -20,3 +20,6 @@ version = "0.1.1"
 
 [dev-dependencies]
 doc-comment = "0.3"
+
+[lib]
+doctest = false

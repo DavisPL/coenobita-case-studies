@@ -25,7 +25,6 @@ members = ["walkdir-list"]
 
 [dependencies]
 same-file = { path = "../same-file" }
-# std = { path = "../../coenobita/library/std" }
 
 [target.'cfg(windows)'.dependencies.winapi-util]
 version = "0.1.1"

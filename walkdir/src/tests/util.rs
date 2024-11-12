@@ -233,7 +233,7 @@ impl TempDir {
         let tmpdir = env::temp_dir();
         for _ in 0..TRIES {
             let count = COUNTER.fetch_add(1, Ordering::SeqCst);
-            let path = tmpdir.join("rust-walkdir").join(count.to_string());
+            let path = tmpdir.join(Path::new("rust-walkdir")).join(Path::new(&count.to_string()));
             if path.is_dir() {
                 continue;
             }

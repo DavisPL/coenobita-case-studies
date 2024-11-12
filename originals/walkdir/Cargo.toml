@@ -13,6 +13,9 @@ license = "Unlicense/MIT"
 exclude = ["/ci/*", "/.travis.yml", "/appveyor.yml"]
 edition = "2018"
 
+[lib]
+doctest = false
+
 [badges]
 travis-ci = { repository = "BurntSushi/walkdir" }
 appveyor = { repository = "BurntSushi/walkdir" }
