@@ -79,7 +79,6 @@ use std::io;
 use std::iter::Peekable;
 use std::ops::Deref;
 use std::path::Components;
-use std::path::Iter;
 use std::path::{self, Component, Path, PathBuf};
 use std::str::FromStr;
 
@@ -1107,7 +1106,7 @@ impl MatchOptions {
 #[cfg(test)]
 mod test {
     use super::{glob, MatchOptions, Pattern};
-    use std::{ffi::OsStr, iter::Peekable, path::{Component, Components, Path, PathBuf}};
+    use std::{iter::Peekable, path::{Components, Path, PathBuf}};
 
     fn collect(components: Peekable<Components>) -> PathBuf {
         components.fold(PathBuf::new(), |mut curr, next| { curr.push(Path::new(&next)); curr })

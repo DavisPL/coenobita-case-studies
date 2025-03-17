@@ -65,7 +65,7 @@ fn main() {
         glob_with(pattern, options).unwrap().map(|r| r.unwrap()).collect()
     }
 
-    let root = TempDir::new("glob-tests");
+    let root = TempDir::new_in("glob-tests");
     let root = root.ok().expect("Should have created a temp directory");
     assert!(env::set_current_dir(root.path()).is_ok());
 

@@ -15,6 +15,8 @@ categories = ["filesystem"]
 [dev-dependencies]
 # FIXME: Replace it with `tempfile` once we bump up MSRV.
 tempdir = { path = "../tempfile", package = "tempfile"}
+# tempdir = { package = "tempfile", version = "0.3" }
+# tempdir = "0.3"
 doc-comment = "0.3"
 
 [lib]

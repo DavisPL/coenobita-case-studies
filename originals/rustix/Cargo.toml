@@ -76,7 +76,8 @@ package = "errno"
 default-features = false
 
 [dev-dependencies]
-tempfile = "3.5.0"
+# tempfile = "3.5.0"
+tempfile = { path = "../tempfile" }
 libc = "0.2.161"
 libc_errno = { package = "errno", version = "0.3.8", default-features = false }
 serial_test = "2.0.0"

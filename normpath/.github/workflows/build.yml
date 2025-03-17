@@ -1,0 +1,32 @@
+name: build
+
+on:
+  pull_request:
+  push:
+    branches:
+    - master
+  schedule:
+  - cron: 0 0 * * FRI
+
+jobs:
+  build:
+    runs-on: ${{ matrix.platform }}
+    steps:
+    - uses: dylni/build-actions/build@master
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, windows-latest]
+  test:
+    needs: [build]
+    runs-on: ${{ matrix.platform }}
+    steps:
+    - uses: dylni/build-actions/test@master
+      with:
+        version: ${{ matrix.version }}
+    - run: cargo test --features localization
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        platform: [macos-latest, ubuntu-latest, windows-latest]
+        version: [1.74.0, stable, beta, nightly]

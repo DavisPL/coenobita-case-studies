@@ -17,7 +17,6 @@ extern crate tempdir;
 
 use glob::{glob, glob_with};
 use std::env;
-use std::ffi::OsStr;
 use std::fs;
 use std::iter::Peekable;
 use std::path::Components;

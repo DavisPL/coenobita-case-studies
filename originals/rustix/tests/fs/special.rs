@@ -1,4 +1,5 @@
 #[cfg(not(target_os = "wasi"))]
+#[cfg(feature = "process")]
 #[test]
 fn test_special_fds() {
     use rustix::fs::{fstat, open, openat, Mode, OFlags, Stat, ABS, CWD};

@@ -1,4 +1,3 @@
-use std::path::Path;
 
 #[cfg(feature = "fs")]
 use std::io::{IoSlice, IoSliceMut};
@@ -100,8 +99,6 @@ fn test_readwrite_p_uninit() {
 #[cfg(feature = "fs")]
 #[test]
 fn test_readwrite_v() {
-    use std::path::Path;
-
     use rustix::fs::{openat, seek, Mode, OFlags, SeekFrom, CWD};
     use rustix::io::{readv, writev};
 
@@ -128,8 +125,6 @@ fn test_readwrite_v() {
 #[cfg(feature = "fs")]
 #[test]
 fn test_readwrite() {
-    use std::path::Path;
-
     use rustix::fs::{openat, seek, Mode, OFlags, SeekFrom, CWD};
     use rustix::io::{read, write};
 
@@ -157,7 +152,6 @@ fn test_readwrite() {
 #[test]
 fn test_readwrite_uninit() {
     use core::mem::MaybeUninit;
-    use std::path::Path;
     use rustix::fs::{openat, seek, Mode, OFlags, SeekFrom, CWD};
     use rustix::io::{read_uninit, write};
 
